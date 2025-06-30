@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Visa Applications{% endblock %}
+{% block content %}
+<h1 class="mb-4">All Visa Applications</h1>
+<div class="mb-3">
+    <a href="{% url 'submit' %}" class="btn btn-success">Submit New</a>
+    <a href="{% url 'export_pdf' %}" class="btn btn-danger">Export PDF</a>
+    <a href="{% url 'export_csv' %}" class="btn btn-primary">Export CSV</a>
+    <a href="{% url 'dashboard' %}" class="btn btn-warning">Dashboard</a>
+    <a href="{% url 'logout' %}" class="btn btn-outline-dark">Logout</a>
+</div>
+<ul class="list-group">
+    {% for app in applications %}
+        <li class="list-group-item">{{ app.applicant_name }} - {{ app.visa_type }} - {{ app.status }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
